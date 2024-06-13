@@ -1,12 +1,11 @@
-import os
 import sys
-import pytest
-import logging
-import configparser
-from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium import webdriver
+import os
+import configparser
+import pytest
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -16,20 +15,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 # Load environment variables from .env file
 load_dotenv()
 
-LOG_DIR = os.getenv('LOG_DIR')
-REPORTS_DIR = os.getenv('REPORTS_DIR')
 SCREENSHOT_DIR = os.getenv('SCREENSHOT_DIR')
 DRIVER_EXECUTABLE_PATH = os.getenv('DRIVER_EXECUTABLE_PATH')
 CONFIG_INI = os.getenv('CONFIG_INI')
-
-for directory in [LOG_DIR, REPORTS_DIR, SCREENSHOT_DIR]:
-    if not os.path.exists(directory):
-        os.makedirs(directory, exist_ok=True)
-
-# Configure logging
-logging.basicConfig(filename=os.path.join(LOG_DIR, 'test_log.log'),
-                    level=logging.INFO,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 
 class Browser:
@@ -73,8 +61,9 @@ def chrome_driver(request, url):
 
     request.addfinalizer(fin)
 
-    yield driver
-    driver.quit()
+    browser = Browser(driver)
+    yield browser
+    browser.quit()
 
 
 @pytest.fixture(scope="session", autouse=True)

@@ -1,17 +1,16 @@
 from POM.pages.base_page import BasePage
 from POM.locators.swag_labs_locators import SwagLabs as el
 
-
 class LoginPage(BasePage):
-    def __init__(self, driver):
-        super().__init__(driver)
+    def __init__(self, browser):
+        super().__init__(browser)
 
     def login(self, username, password):
         self.get_element(el.USER_NAME_PLACEHOLDER).send_keys(username)
         self.get_element(el.PASSWORD_PLACEHOLDER).send_keys(password)
         self.get_element(el.LOGIN_BUTTON).click()
     
-    def place_a_order_in_swag_labs(self, first_name, last_name, zip_code):
+    def place_an_order_in_swag_labs(self, first_name, last_name, zip_code):
         self.get_element(el.SWAG_LABS_BAG_HEADER).click()
         self.get_element(el.ADD_TO_CART_BUTTON).click()
         self.get_element(el.SHOPPING_CART_BUTTON).click()
