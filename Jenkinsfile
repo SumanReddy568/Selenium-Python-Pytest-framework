@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/SumanReddy568/Selenium-Python-Pytest-framework.git'
+                // Specify the branch explicitly to avoid mismatch
+                git branch: 'main', url: 'https://github.com/SumanReddy568/Selenium-Python-Pytest-framework.git'
             }
         }
         
@@ -17,7 +18,12 @@ pipeline {
         
         stage('Run Tests') {
             steps {
-                sh 'source venv/bin/activate && cd tests && pytest'
+                script {
+                    // Capture potential errors within the stage
+                    catchError {
+                        sh 'source venv/bin/activate && cd tests && pytest'
+                    }
+                }
             }
         }
         
