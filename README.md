@@ -31,8 +31,6 @@ The framework follows a modular architecture and utilizes several key components
 
 ## Project Structure
 
-```
-.
 ├── config.ini                 # Configuration file for storing test parameters
 ├── Dockerfile                 # Docker configuration file
 ├── Jenkinsfile                # Jenkins pipeline configuration
