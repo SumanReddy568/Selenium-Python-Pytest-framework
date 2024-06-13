@@ -28,7 +28,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: adcuratiodev/core-automation:latest
+          tags: sumanreddy568/automation-framework:latest
           file: ./Dockerfile
 
       - name: Logout from Docker Hub
