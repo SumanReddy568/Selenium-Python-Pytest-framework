@@ -38,7 +38,7 @@ RUN chrome_version=$(google-chrome --version | awk '{print $3}' | cut -d '.' -f 
     && echo "Chrome version: $chrome_version"
 
 # Download Chromedriver corresponding to the Chrome version
-RUN wget -O chromedriver.zip https://storage.googleapis.com/chrome-for-testing-public/$chrome_version/linux64/chromedriver-linux64.zip \
+RUN wget -O chromedriver.zip https://storage.googleapis.com/chrome-for-testing-public/126.0.6478.55/linux64/chromedriver-linux64.zip \
     && unzip chromedriver.zip -d /opt/ \
     && rm chromedriver.zip
     
