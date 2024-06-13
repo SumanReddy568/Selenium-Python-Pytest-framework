@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.9'
-            args '-u root'
-        }
-    }
+    agent any
     
     stages {
         stage('Checkout') {
