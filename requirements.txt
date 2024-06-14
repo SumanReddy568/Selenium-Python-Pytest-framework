@@ -2,7 +2,7 @@ aiofiles==0.6.0
 ansible-base==2.10.8
 apache-libcloud==3.2.0
 appdirs==1.4.4
-apturl==0.5.2
+apturl
 argcomplete==1.8.1
 async-timeout==4.0.3
 asyncpg==0.29.0
