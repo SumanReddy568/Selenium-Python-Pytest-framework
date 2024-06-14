@@ -1,2 +1,2 @@
-def test_example(chrome_driver):
-    assert "Google" == chrome_driver.title, "Expected 'Google' in page title"
+def test_example(browser):
+    assert "Google" == browser.title, "Expected 'Google' in page title"
