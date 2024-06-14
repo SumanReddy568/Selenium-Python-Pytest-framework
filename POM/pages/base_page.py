@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 SCREENSHOT_DIR = os.getenv('SCREENSHOT_DIR')
 
+
 class BasePage:
     def __init__(self, browser):
         self.browser = browser

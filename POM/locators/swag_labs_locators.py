@@ -3,7 +3,8 @@ class SwagLabs:
     PASSWORD_PLACEHOLDER = "//input[@placeholder='Password']"
     LOGIN_BUTTON = "//input[@ID='login-button']"
     PRODUCT_TEXT_FILES = "//span[@class='title']"
-    SWAG_LABS_BAG_HEADER = "//a[@id='item_4_title_link']/div[@class='inventory_item_name ' and contains(text(), 'Sauce Labs Backpack')]"
+    SWAG_LABS_BAG_HEADER = ("//a[@id='item_4_title_link']/div[@class='inventory_item_name ' and contains(text(), "
+                            "'Sauce Labs Backpack')]")
     ADD_TO_CART_BUTTON = "//button[@id='add-to-cart']"
     SHOPPING_CART_BUTTON = "//a[@class='shopping_cart_link']"
     YOUR_CART_PRICE_TEXT = "//div[@class='inventory_item_price']"

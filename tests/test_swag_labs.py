@@ -22,6 +22,7 @@ except FileNotFoundError as e:
     logging.error(str(e))
     sys.exit(1)
 
+
 def test_swag_labs_order_checkout(browser):
     try:
         first_name = generate_fake_data("first_name")
