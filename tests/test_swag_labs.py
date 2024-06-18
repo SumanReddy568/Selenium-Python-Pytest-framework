@@ -5,19 +5,15 @@ import configparser
 from POM.pages.swag_labs_pages import LoginPage
 from utils.helper.faker_helper import generate_fake_data
 from POM.notifications.swag_labs_messages import SwagLabs
-
+from dotenv import load_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
+load_dotenv()
 config = configparser.ConfigParser()
 config_path = os.getenv('CONFIG_INI')
 
 try:
-    if config_path:
-        config.read(config_path)
-        username = config.get('Credentials', 'username')
-        password = config.get('Credentials', 'password')
-    else:
-        raise FileNotFoundError("CONFIG_INI environment variable not set or file not found.")
+    username = os.environ.get('username')
+    password = os.environ.get('password')
 except FileNotFoundError as e:
     logging.error(str(e))
     sys.exit(1)
