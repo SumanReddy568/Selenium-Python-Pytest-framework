@@ -19,10 +19,9 @@ pipeline {
             steps {
                 script {
                     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                        // Activate venv, run pytest with browser_name argument
                         sh '''
                         . venv/bin/activate
-                        pytest --html=./reports/Pytest_Test_Run_Report.html -n auto --browser_name=chrome
+                        pytest --html=./reports/Pytest_Test_Run_Report.html --browser_name=chrome
                         '''
                     }
                 }
@@ -31,7 +30,7 @@ pipeline {
 
         stage('Publish Test Results') {
             steps {
-                junit '**/tests/test-results.xml'
+                junit '**/reports/test-results.xml'
             }
         }
     }
