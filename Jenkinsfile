@@ -19,7 +19,11 @@ pipeline {
             steps {
                 script {
                     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                        sh '. venv/bin/activate && cd tests && pytest'
+                        // Activate venv, run pytest with browser_name argument
+                        sh '''
+                        . venv/bin/activate
+                        pytest --html=./reports/Pytest_Test_Run_Report.html -n auto --browser_name=chrome
+                        '''
                     }
                 }
             }
@@ -32,3 +36,4 @@ pipeline {
         }
     }
 }
+
