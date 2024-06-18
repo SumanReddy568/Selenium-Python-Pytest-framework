@@ -22,7 +22,7 @@ CONFIG_INI = os.getenv('CONFIG_INI')
 LOG_DIR = os.getenv('LOG_DIR')
 DRIVER_EXECUTABLE_PATH = os.getenv('DRIVER_EXECUTABLE_PATH')
 REPORTS_DIR = os.getenv('REPORTS_DIR')
-
+URL = os.getenv('login_page')
 for directory in [LOG_DIR, REPORTS_DIR, SCREENSHOT_DIR]:
     if not os.path.exists(directory):
         os.makedirs(directory, exist_ok=True)
@@ -49,10 +49,10 @@ def browser_name(request):
 
 @pytest.fixture(scope="session")
 def url():
-    config = configparser.ConfigParser()
-    config.read(CONFIG_INI)
-    url = config.get('URLs', 'login_page')
-    return url
+    
+    # config = configparser.ConfigParser()
+    # config.read(CONFIG_INI)
+    return URL
 
 @pytest.fixture(scope="session")
 def browser(request, browser_name, url):

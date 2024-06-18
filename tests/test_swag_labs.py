@@ -8,12 +8,12 @@ from POM.notifications.swag_labs_messages import SwagLabs
 from dotenv import load_dotenv
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 load_dotenv()
-config = configparser.ConfigParser()
-config_path = os.getenv('CONFIG_INI')
+# config = configparser.ConfigParser()
+# config_path = os.getenv('CONFIG_INI')
 
 try:
-    username = os.environ.get('username')
-    password = os.environ.get('password')
+    username = os.getenv('username')
+    password = os.getenv('password')
 except FileNotFoundError as e:
     logging.error(str(e))
     sys.exit(1)
